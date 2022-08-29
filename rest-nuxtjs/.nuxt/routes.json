@@ -1,0 +1,37 @@
+[
+  {
+    "name": "create",
+    "path": "/create",
+    "component": "/Users/keroliao/Documents/GitHub/blog/rest-nuxtjs/pages/create.vue",
+    "chunkName": "pages/create",
+    "_name": "_7646b964"
+  },
+  {
+    "name": "drafts",
+    "path": "/drafts",
+    "component": "/Users/keroliao/Documents/GitHub/blog/rest-nuxtjs/pages/drafts.vue",
+    "chunkName": "pages/drafts",
+    "_name": "_22e5d244"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "/Users/keroliao/Documents/GitHub/blog/rest-nuxtjs/pages/signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_54cf056a"
+  },
+  {
+    "name": "p-id",
+    "path": "/p/:id?",
+    "component": "/Users/keroliao/Documents/GitHub/blog/rest-nuxtjs/pages/p/_id.vue",
+    "chunkName": "pages/p/_id",
+    "_name": "_7c5c908e"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/keroliao/Documents/GitHub/blog/rest-nuxtjs/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_47225570"
+  }
+]
