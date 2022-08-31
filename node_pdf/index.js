@@ -1,24 +1,48 @@
 const fs = require('fs');
-const { PdfReader } = require("pdfreader");
+const PDFParser = require("pdf2json");
 
-async function parse() {
-  return new Promise((resolve, reject) => {
-    let arr = []
-    new PdfReader().parseFileItems("./111090_30320.pdf", (err, item) => {
-      if (err) reject(err)
+// new version
+const pdfParser = new PDFParser(this, 1); // 沒有文件
+pdfParser.on("readable", meta => console.log("PDF Metadata", meta));
+pdfParser.on("data", page => {
+  fs.writeFileSync("./F1040EZ.json", pdfParser.getRawTextContent())
+});
+pdfParser.on("error", err => console.error("Parser Error", err));
 
-      if (!item) {
-        resolve(arr.join(''))
-      } else if (item.text) {
-        arr.push(item.text)
-      }
-    });
-  })
-}
 
-parse().then((res) => {
-  fs.writeFile("./content.txt", res, () => { console.log("Done."); });
-})
+// old version
+
+// const pdfParser = new PDFParser(this, 1);
+// pdfParser.on("pdfParser_dataError", errData => console.error(errData.parserError));
+// pdfParser.on("pdfParser_dataReady", (pdfData) => {
+//   console.log(pdfData.Meta)
+//   fs.writeFileSync("./F1040EZ.json", pdfParser.getRawTextContent());
+// });
+
+pdfParser.loadPDF("./111090_30320.pdf");
+
+
+// const fs = require('fs');
+// const { PdfReader } = require("pdfreader");
+
+// async function parse() {
+//   return new Promise((resolve, reject) => {
+//     let arr = []
+//     new PdfReader().parseFileItems("./111090_30320.pdf", (err, item) => {
+//       if (err) reject(err)
+
+//       if (!item) {
+//         resolve(arr.join(''))
+//       } else if (item.text) {
+//         arr.push(item.text)
+//       }
+//     });
+//   })
+// }
+
+// parse().then((res) => {
+//   fs.writeFile("./content.txt", res, () => { console.log("Done."); });
+// })
 
 
 /* 

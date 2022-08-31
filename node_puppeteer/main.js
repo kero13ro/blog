@@ -5,16 +5,19 @@ const UserPreferencesPlugin = require("puppeteer-extra-plugin-user-preferences")
 
 const downloadImageDirectoryPath = process.cwd();
 
+// https://chromium.googlesource.com/chromium/src/+/master/chrome/common/pref_names.cc 
 puppeteer.use(
   UserPreferencesPlugin({
     userPrefs: {
       download: {
+        // whether we should ask the user or just download it automatically.
         prompt_for_download: false,
         open_pdf_in_system_reader: true,
         default_directory: downloadImageDirectoryPath,
         // automatic_downloads: 1,
       },
       plugins: {
+        // Whether Chrome should use its internal PDF viewer or not
         always_open_pdf_externally: true,
       },
       // disable allow-multiple-downloads popup
@@ -41,6 +44,7 @@ puppeteer.use(
   await page.waitForTimeout(300);
   await page.click("#ctl00_holderContent_btnQuery")
   await page.waitForTimeout(300);
+  // https://chromedevtools.github.io/devtools-protocol/
   await page._client().send('Page.setDownloadBehavior', { behavior: 'allow', downloadPath: './downloads' });
 
 

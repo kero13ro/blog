@@ -1,4 +1,4 @@
 ## 將PDF 轉為純文字 
 
-- [V] pdfreader
-- [ ] 
+- pdfreader: 沒有換行
+- pdf2json
