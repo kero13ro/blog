@@ -1,0 +1,26 @@
+{
+  "name": "puppeteer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kero13ro/node-puppeteer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kero13ro/node-puppeteer/issues"
+  },
+  "homepage": "https://github.com/kero13ro/node-puppeteer#readme",
+  "dependencies": {
+    "node-cron": "^3.0.1",
+    "puppeteer": "^14.4.1",
+    "uuid": "^8.3.2"
+  }
+}
