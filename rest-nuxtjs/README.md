@@ -3,6 +3,7 @@
 conclusion: 
 - 使用 express(pure js), nuxt , sqlite。
 - 若沒有使用 TS，在express 無法提示 prisma 架構，因此不建議使用。
+- [0911 更新] 將 script.js 改為 TS 版本，可以兼容 Nuxt
 
 ---
 

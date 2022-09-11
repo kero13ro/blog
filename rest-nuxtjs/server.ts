@@ -1,6 +1,9 @@
+import express, { Express, Request, Response } from 'express';
+import { PrismaClient } from "@prisma/client";
 const { Nuxt, Builder } = require('nuxt')
-const express = require('express')
-const { PrismaClient } = require('@prisma/client')
+
+// const express = require('express')
+// const { PrismaClient } = require('@prisma/client')
 
 const app = express()
 const prisma = new PrismaClient()
@@ -8,7 +11,7 @@ const prisma = new PrismaClient()
 // Body parser, to access `req.body`
 app.use(express.json())
 
-app.get('/api/drafts', async (req, res) => {
+app.get('/api/drafts', async (req: Request, res: Response) => {
   const posts = await prisma.post.findMany({
     where: { published: false },
     include: { author: true }
@@ -16,7 +19,7 @@ app.get('/api/drafts', async (req, res) => {
   res.json(posts)
 })
 
-app.post(`/api/user`, async (req, res) => {
+app.post(`/api/user`, async (req: Request, res: Response) => {
   const result = await prisma.user.create({
     data: {
       ...req.body,
@@ -25,20 +28,20 @@ app.post(`/api/user`, async (req, res) => {
   res.json(result)
 })
 
-app.post(`/api/post`, async (req, res) => {
+app.post(`/api/post`, async (req: Request, res: Response) => {
   const { title, content, authorEmail } = req.body
   const result = await prisma.post.create({
     data: {
       title,
-      content,
-      published: false,
+      // content,
+      // published: false,
       author: { connect: { email: authorEmail } },
     },
   })
   res.json(result)
 })
 
-app.put('/api/publish/:id', async (req, res) => {
+app.put('/api/publish/:id', async (req: Request, res: Response) => {
   const { id } = req.params
   const post = await prisma.post.update({
     where: {
@@ -49,7 +52,7 @@ app.put('/api/publish/:id', async (req, res) => {
   res.json(post)
 })
 
-app.delete(`/api/post/:id`, async (req, res) => {
+app.delete(`/api/post/:id`, async (req: Request, res: Response) => {
   const { id } = req.params
   const post = await prisma.post.delete({
     where: {
@@ -59,7 +62,7 @@ app.delete(`/api/post/:id`, async (req, res) => {
   res.json(post)
 })
 
-app.get(`/api/post/:id`, async (req, res) => {
+app.get(`/api/post/:id`, async (req: Request, res: Response) => {
   const { id } = req.params
   const post = await prisma.post.findUnique({
     where: {
@@ -70,7 +73,7 @@ app.get(`/api/post/:id`, async (req, res) => {
   res.json(post)
 })
 
-app.get('/api/feed', async (req, res) => {
+app.get('/api/feed', async (req: Request, res: Response) => {
   const posts = await prisma.post.findMany({
     where: { published: true },
     include: { author: true },
@@ -78,19 +81,19 @@ app.get('/api/feed', async (req, res) => {
   res.json(posts)
 })
 
-app.get('/api/filterPosts', async (req, res) => {
+app.get('/api/filterPosts', async (req: Request, res: Response) => {
   const { searchString } = req.query
   const draftPosts = await prisma.post.findMany({
     where: {
       OR: [
         {
           title: {
-            contains: searchString,
+            contains: String(searchString),
           },
         },
         {
           content: {
-            contains: searchString,
+            contains: String(searchString),
           },
         },
       ],
