@@ -1,4 +1,10 @@
-# Fullstack Example with NuxtJs (REST API / lack Typescript)
+# Fullstack Example with NuxtJs (REST API)
+
+conclusion: 
+- 使用 express(pure js), nuxt , sqlite。
+- 若沒有使用 TS，在express 無法提示 prisma 架構，因此不建議使用。
+
+---
 
 This example shows how to implement a **fullstack app with [NuxtJs](https://nuxtjs.org//)** using [Vue](https://vuejs.org/) (frontend), [Express](https://expressjs.com/) and [Prisma Client](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client) (backend). It uses a SQLite database file with some initial dummy data which you can find at [`./prisma/dev.db`](./prisma/dev.db).
 

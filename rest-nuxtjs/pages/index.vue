@@ -22,15 +22,9 @@ export default {
       feed: [],
     }
   },
-  mounted() {
-    console.log(location.origin)
-  },
   async fetch() {
     const feed = await fetch(`${location.origin}/api/feed`).then((res) =>
       res.json()
-        .catch(err => {
-          console.log(err)
-        })
     )
     this.feed = feed
   },
