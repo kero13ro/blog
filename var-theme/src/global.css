@@ -1,0 +1,15 @@
+#app {
+  --main: #8189d1;
+  --sub: #3389d1;
+  --contrast: #fff;
+  --title: #990b0b;
+  --box-image: url('https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs')
+}
+
+#app.dark {
+  --main: #fff;
+  --sub: #ccc;
+  --contrast: #333;
+
+  --box-image: url('https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI')
+}
