@@ -1,0 +1,24 @@
+
+# node 運行環境
+FROM node:lts as builder
+
+# 存放image的目錄
+RUN mkdir -p /app
+COPY . /app
+WORKDIR /app
+
+# 如果需要相關的環境變數請自行調整路徑
+#COPY ./env/.prod-env /app/env/.prod-env
+
+# 對外的port
+ENV HOST 0.0.0.0 
+ENV NUXT_VERSION=1.01
+ENV PROJECT_VERSION=1.02
+EXPOSE 3000
+
+# 安裝套件並build專案
+RUN npm install
+RUN npm run build
+
+# 執行專案
+CMD [ "npm", "start" ]
