@@ -2,5 +2,6 @@
 ```
 npm install -g parcel
 
-parcel index.htm
+使用 parcel 自動下載編譯工具
+parcel index.html
 ```
