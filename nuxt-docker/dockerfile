@@ -4,6 +4,8 @@ FROM node:lts as builder
 
 # 存放image的目錄
 RUN mkdir -p /app
+
+# (非正規寫法，應該要先複製 package.json 安裝，避免複製node module)
 COPY . /app
 WORKDIR /app
 
@@ -11,7 +13,7 @@ WORKDIR /app
 #COPY ./env/.prod-env /app/env/.prod-env
 
 # 對外的port
-ENV HOST 0.0.0.0 
+ENV HOST 0.0.0.0
 ENV NUXT_VERSION=1.01
 ENV PROJECT_VERSION=1.02
 EXPOSE 3000
